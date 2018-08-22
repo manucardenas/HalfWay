@@ -19,18 +19,3 @@ places.each do |place_|
 
   place.save
 end
-
-
-
-
-  # Business.find_or_create_by (
-  # name: name,
-  # categories: categories,
-  # image_url: image_url,
-  # url: url,
-  # rating: rating,
-  # location: location,
-  # phone: phone,
-  # latitude: latitude,
-  # longitude: longitude,
-  # )
