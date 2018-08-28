@@ -4,7 +4,11 @@ import axios from 'axios'
 import Search from './Search'
 
 export default class Map extends Component {
-  
+
+  mapCenter = (e) => {
+    e.preventDefault()
+    console.log('hi');
+  }
 
   componentDidMount() {
     mapboxgl.accessToken = 'pk.eyJ1IjoiYW5keXdlaXNzMTk4MiIsImEiOiJIeHpkYVBrIn0.3N03oecxx5TaQz7YLg2HqA'
@@ -24,7 +28,7 @@ export default class Map extends Component {
       <div>
         <div style={style} ref={el => this.mapContainer = el}>
         </div>
-        <Search  />
+        <Search mapCenter={this.mapCenter} />
       </div>
   );
   }
