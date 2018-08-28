@@ -7,7 +7,10 @@ export default class Map extends Component {
 
   mapCenter = (e) => {
     e.preventDefault();
-    console.log('hi');
+    const pointA = e.target.elements.pointA.value
+    const pointB = e.target.elements.pointB.value
+    console.log(pointA);
+    console.log(pointB);
   }
 
   componentDidMount() {
