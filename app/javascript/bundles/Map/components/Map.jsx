@@ -6,7 +6,7 @@ import Search from './Search'
 export default class Map extends Component {
 
   mapCenter = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     console.log('hi');
   }
 
