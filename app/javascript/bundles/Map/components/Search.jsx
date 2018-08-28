@@ -6,11 +6,12 @@ export default class Search extends Component {
 
   render(){
     return(
-      <div onSubmit={this.props.mapCenter}>
+      <form onSubmit={this.props.mapCenter}>
         <input name="point-a" placeholder="Point A" ></input>
         <input name="point-b" placeholder="Point B" ></input>
         <button>Submit</button>
-      </div>
+      </form>
+
     )
   }
 }
