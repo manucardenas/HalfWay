@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import mapboxgl from 'mapbox-gl';
 import axios from 'axios'
+import Search from './Search'
 
 export default class Map extends Component {
+  
+
   componentDidMount() {
     mapboxgl.accessToken = 'pk.eyJ1IjoiYW5keXdlaXNzMTk4MiIsImEiOiJIeHpkYVBrIn0.3N03oecxx5TaQz7YLg2HqA'
     this.map = new mapboxgl.Map({
@@ -13,11 +16,17 @@ export default class Map extends Component {
 
   render() {
     const style = {
-      width: '100%',
+      width: '80%',
       height: '500px',
       backgroundColor: 'azure'
     };
-    return <div style={style} ref={el => this.mapContainer = el} />;
+    return(
+      <div>
+        <div style={style} ref={el => this.mapContainer = el}>
+        </div>
+        <Search  />
+      </div>
+  );
   }
 
   componentWillUnmount() {
