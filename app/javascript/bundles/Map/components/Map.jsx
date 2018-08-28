@@ -7,7 +7,13 @@ export default class Map extends Component {
 
   mapCenter = (e) => {
     e.preventDefault();
-    console.log('hi');
+    const pointA = e.target.elements.pointA.value
+    const pointB = e.target.elements.pointB.value
+
+    axios.post(`/halfway_points.json`, {point_a: pointA, point_b: pointB})
+      .then((response) => {
+        console.log(response.data);
+      })
   }
 
   componentDidMount() {
