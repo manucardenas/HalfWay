@@ -10,11 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_22_204511) do
+ActiveRecord::Schema.define(version: 2018_08_25_192620) do
+
+  create_table "categories", force: :cascade do |t|
+    t.string "category"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "places", force: :cascade do |t|
     t.string "name"
-    t.string "categories"
     t.string "image_url"
     t.string "url"
     t.float "rating"
@@ -24,6 +30,15 @@ ActiveRecord::Schema.define(version: 2018_08_22_204511) do
     t.float "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "places_categories", force: :cascade do |t|
+    t.integer "place_id"
+    t.integer "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_places_categories_on_category_id"
+    t.index ["place_id"], name: "index_places_categories_on_place_id"
   end
 
 end
