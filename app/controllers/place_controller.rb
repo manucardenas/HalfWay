@@ -7,4 +7,5 @@ class PlaceController < ApplicationController
                 # .split(",")
     # puts @activity
   end
+ end
 end
