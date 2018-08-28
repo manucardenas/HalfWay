@@ -3,6 +3,5 @@ Rails.application.routes.draw do
   root 'place#index'
   get 'place/index'
   resources :halfway_points, only: [:create]
-
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get 'place/show'
 end
