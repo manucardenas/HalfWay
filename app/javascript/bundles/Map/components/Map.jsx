@@ -9,8 +9,11 @@ export default class Map extends Component {
     e.preventDefault();
     const pointA = e.target.elements.pointA.value
     const pointB = e.target.elements.pointB.value
-    console.log(pointA);
-    console.log(pointB);
+
+    axios.post(`/halfway_points.json`, {point_a: pointA, point_b: pointB})
+      .then((response) => {
+        console.log(response.data);
+      })
   }
 
   componentDidMount() {
