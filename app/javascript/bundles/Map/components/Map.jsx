@@ -9,11 +9,15 @@ export default class Map extends Component {
     e.preventDefault();
     const pointA = e.target.elements.pointA.value
     const pointB = e.target.elements.pointB.value
-
+    const map = this.map;
     axios.post(`/halfway_points.json`, {point_a: pointA, point_b: pointB})
       .then((response) => {
-        console.log(response.data);
-      })
+        const halfWay = response.data.features.find((feature) => {
+          return feature.properties.title === "Halfway"
+        });
+        map.getSource('points').setData(response.data);
+        map.flyTo({center: halfWay.geometry.coordinates});
+      });
   }
 
   componentDidMount() {
@@ -22,6 +26,20 @@ export default class Map extends Component {
       container: this.mapContainer,
       style: `mapbox://styles/mapbox/streets-v9`
     });
+    const map = this.map;
+    map.on('load', function() {
+      map.addSource(
+        'points',
+        {
+            type: 'geojson',
+            data: {
+                    type: "FeatureCollection",
+                    features: []
+                  }
+        }
+      );
+      map.addLayer({ id: 'points', type: 'circle', source: 'points'});
+    })
   }
 
   render() {
