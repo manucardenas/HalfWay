@@ -3,8 +3,6 @@ class PlaceController < ApplicationController
   end
 
   def show
-    @activities = Category.find_by(category: params[:type]).places
-                # .split(",")
-    # puts @activity
+    @activities = Category.find_by(category: params[:category]).places
   end
 end
