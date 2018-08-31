@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import mapboxgl from 'mapbox-gl';
-import axios from 'axios'
-import Search from './Search'
+import axios from 'axios';
+import Search from './Search';
+import Menu from '../../Menu/components/Menu';
 
 export default class Map extends Component {
 
@@ -16,7 +17,7 @@ export default class Map extends Component {
           return feature.properties.title === "Halfway"
         });
         map.getSource('points').setData(response.data);
-        map.flyTo({center: halfWay.geometry.coordinates});
+        map.flyTo({center: halfWay.geometry.coordinates, zoom: 12});
       });
   }
 
@@ -50,11 +51,13 @@ export default class Map extends Component {
       backgroundColor: 'azure'
     };
     return(
-      <div>
-        <div style={style} ref={el => this.mapContainer = el}>
+      <Menu>
+        <div>
+          <div style={style} ref={el => this.mapContainer = el}>
+          </div>
+          <Search mapCenter={this.mapCenter} />
         </div>
-        <Search mapCenter={this.mapCenter} />
-      </div>
+      </Menu>
   );
   }
 
