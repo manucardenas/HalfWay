@@ -41,11 +41,12 @@ export default class Map extends Component {
       );
       map.addLayer({ id: 'points', type: 'circle', source: 'points'});
     })
+    map.addControl(new mapboxgl.NavigationControl());
   }
 
   render() {
     const style = {
-      width: '80%',
+      width: '100%',
       height: '500px',
       backgroundColor: 'azure'
     };
