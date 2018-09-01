@@ -6,6 +6,8 @@ import Menu from '../../Menu/components/Menu';
 
 export default class Map extends Component {
 
+  state = {activity: null}
+
   mapCenter = (e) => {
     e.preventDefault();
     const pointA = e.target.elements.pointA.value
@@ -22,13 +24,24 @@ export default class Map extends Component {
       });
   }
 
+  updateChoice = (e) => {
+    this.setState({
+      activity: e.currentTarget.value
+    })
+  }
+
+ pickChoice = (e)=>{
+   // e.preventDefault();
+   //
+   //  console.log(e.target)
+  }
   componentDidMount() {
     //render map
     mapboxgl.accessToken = 'pk.eyJ1IjoiYW5keXdlaXNzMTk4MiIsImEiOiJIeHpkYVBrIn0.3N03oecxx5TaQz7YLg2HqA'
     this.map = new mapboxgl.Map({
       container: this.mapContainer,
       style: `mapbox://styles/mapbox/streets-v9`,
-      // center: set to current location with params 
+      // center: set to current location with params
     });
     const map = this.map;
     //When map loads, add the source from the geojson to show points
@@ -61,7 +74,7 @@ export default class Map extends Component {
         <div>
           <div style={style} ref={el => this.mapContainer = el}>
           </div>
-          <Search mapCenter={this.mapCenter} />
+          <Search activity={this.state.activity} mapCenter={this.mapCenter} updateChoice={this.updateChoice} pickChoice={this.pickChoice} />
         </div>
       </Menu>
   );
