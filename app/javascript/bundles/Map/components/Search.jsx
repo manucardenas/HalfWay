@@ -10,6 +10,7 @@ export default class Search extends Component {
         <input name="pointA" placeholder="Point A" ></input>
         <input name="pointB" placeholder="Point B" ></input>
         <button>Submit</button>
+        <button>Brunch</button>
       </form>
 
     )

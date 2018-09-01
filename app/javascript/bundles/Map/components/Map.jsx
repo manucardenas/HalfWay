@@ -28,7 +28,7 @@ export default class Map extends Component {
     this.map = new mapboxgl.Map({
       container: this.mapContainer,
       style: `mapbox://styles/mapbox/streets-v9`,
-      center:
+      // center: set to current location with params 
     });
     const map = this.map;
     //When map loads, add the source from the geojson to show points
@@ -46,8 +46,8 @@ export default class Map extends Component {
       //add navigation controls to top right of map
       map.addControl(new mapboxgl.NavigationControl());
       //allow map to center to user location enter under this line
-    });
-  }
+    })
+}
 
   render() {
     const style = {
