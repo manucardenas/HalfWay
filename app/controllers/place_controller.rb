@@ -4,5 +4,6 @@ class PlaceController < ApplicationController
 
   def show
     @activities = Category.find_by(category: params[:category]).places
+    render json: @activities 
   end
 end
