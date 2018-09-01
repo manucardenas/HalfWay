@@ -1,7 +1,8 @@
 class PlaceController < ApplicationController
   def index
-    p params
+    if params['activity']
     @activities = Category.find_by(category: params[:activity]).places
+  end
     respond_to do |format|
       format.html
       format.json { render json: {activities: @activities} }
