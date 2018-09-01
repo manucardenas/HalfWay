@@ -32,9 +32,7 @@ export default class Map extends Component {
 
  pickChoice = (e)=>{
    e.preventDefault();
-   //
-   //  console.log(e.target)
-
+//Make axios request to seed file by value of radio button using activity as the param
    axios.defaults.headers.common['Accept'] = 'application/json'
    axios.get(`/place?activity=${this.state.activity}`)
     .then((response) => {
@@ -42,8 +40,8 @@ export default class Map extends Component {
         console.log(place.name)
       })
     })
-
   }
+  
   componentDidMount() {
     //render map
     mapboxgl.accessToken = 'pk.eyJ1IjoiYW5keXdlaXNzMTk4MiIsImEiOiJIeHpkYVBrIn0.3N03oecxx5TaQz7YLg2HqA'
