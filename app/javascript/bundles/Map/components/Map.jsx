@@ -31,9 +31,18 @@ export default class Map extends Component {
   }
 
  pickChoice = (e)=>{
-   // e.preventDefault();
+   e.preventDefault();
    //
    //  console.log(e.target)
+
+   axios.defaults.headers.common['Accept'] = 'application/json'
+   axios.get(`/place?activity=${this.state.activity}`)
+    .then((response) => {
+      response.data.activities.map((place)=>{
+        console.log(place.name)
+      })
+    })
+
   }
   componentDidMount() {
     //render map
