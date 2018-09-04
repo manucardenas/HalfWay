@@ -6,7 +6,13 @@ import Menu from '../../Menu/components/Menu';
 
 export default class Map extends Component {
 
-  state = {activity: null}
+  constructor(){
+  super();
+  this.state = {
+    activity: null
+  };
+  window.map = this;
+}
 
   mapCenter = (e) => {
     e.preventDefault();
@@ -30,44 +36,107 @@ export default class Map extends Component {
     })
   }
 
- pickChoice = (e)=>{
-   e.preventDefault();
-//Make axios request to seed file by value of radio button using activity as the param
-   axios.defaults.headers.common['Accept'] = 'application/json'
-   axios.get(`/place?activity=${this.state.activity}`)
-    .then((response) => {
-      response.data.activities.map((place)=>{
-        console.log(place.name)
-      })
-    })
-  }
-  
-  componentDidMount() {
-    //render map
-    mapboxgl.accessToken = 'pk.eyJ1IjoiYW5keXdlaXNzMTk4MiIsImEiOiJIeHpkYVBrIn0.3N03oecxx5TaQz7YLg2HqA'
-    this.map = new mapboxgl.Map({
+//  pickChoice = (e)=>{
+//    e.preventDefault();
+// //Make axios request to seed file by value of radio button using activity as the param
+//    axios.defaults.headers.common['Accept'] = 'application/json'
+//    axios.get(`/place?activity=${this.state.activity}`)
+//     .then((response) => {
+//       response.data.activities.map((place)=>{
+//         console.log(place.name)
+//       })
+//     })
+//   }
+
+  async componentDidMount() {
+        mapboxgl.accessToken = 'pk.eyJ1IjoiYW5keXdlaXNzMTk4MiIsImEiOiJIeHpkYVBrIn0.3N03oecxx5TaQz7YLg2HqA'
+    let { coordinates, geolocate } = this.props;
+    const geolocationOptions = {
+      enableHighAccuracy: true,
+      maximumAge: 3000,
+      timeout: 27000
+    };
+    const mapOptions = {
       container: this.mapContainer,
       style: `mapbox://styles/mapbox/streets-v9`,
-      // center: set to current location with params
-    });
-    const map = this.map;
-    //When map loads, add the source from the geojson to show points
-    map.on('load', function() {
-      map.addSource(
-        'points',
-        {
-            type: 'geojson',
-            data: {
-                    type: "FeatureCollection",
-                    features: []
-                  }
-        });
-      map.addLayer({ id: 'points', type: 'circle', source: 'points'});
-      //add navigation controls to top right of map
-      map.addControl(new mapboxgl.NavigationControl());
-      //allow map to center to user location enter under this line
-    })
+      zoom: 12,
+      center: [-80.2044, 25.8028]
+    }
+
+    if ("geolocation" in navigator && geolocate) {
+      navigator.geolocation.getCurrentPosition(
+        async (position) => {
+          coordinates = [
+            position.coords.longitude,
+            position.coords.latitude
+          ];
+        mapOptions.center = coordinates;
+        await this.createMap(mapOptions, geolocationOptions)
+      },
+        async () => { await this.createMap(mapOptions, geolocationOptions) },
+        geolocationOptions
+      );
+    } else {
+      await this.createMap(mapOptions, geolocationOptions);
+    }
 }
+
+//INITIALIZE MAPS
+createMap = (mapOptions, geolocationOptions) => {
+  this.map = new mapboxgl.Map(mapOptions);
+  const map = this.map;
+  //CENTERS MAP - REFER TO MAP-OPTIONS
+  const { lat, lng } = map.getCenter();
+
+  //APPENDS GEOLOCATOR BUTTON
+  map.addControl(
+    new mapboxgl.GeolocateControl({
+      positionOptions: geolocationOptions,
+      trackUserLocation: true
+    })
+  );
+  //APPEND EASY ZOOM IN / ZOOM OUT CONTROLS
+  map.addControl(
+    new mapboxgl.NavigationControl({
+      positionOptions: geolocationOptions,
+      trackUserLocation: true
+    })
+  );
+  //ON MAP LOAD, ADD ALL PLACE MARKERS FROM .JSON DATA
+  map.on('load', (event) => {
+    this.pickChoice();
+    //AFTER MAP SETTLES, FETCH NEW PLACE
+    map.on('moveend', (e) => {
+      this.pickChoice();
+     });
+  });
+}
+
+
+  //METHOD THAT MAKES AXIOS REQUEST FOR PLACES.JSON
+  pickChoice = (e) => {
+    e.preventDefault();
+    const map = this.map;
+    const self = this;
+    const { lat, lng } = map.getCenter();
+    axios.defaults.headers.common['Accept'] = 'application/json'
+    axios.get(`/place?activity=${this.state.activity}`)
+     .then((response) => {
+       let places = response.data.activities.map((place)=>{
+         console.log(place.name)
+         return place;
+       })
+       console.log(places);
+       places.forEach((place) =>{
+         var elm = document.createElement('div');
+         console.log(place);
+         let marker = new mapboxgl.Marker(elm)
+         .setLngLat({lng: place.longitude, lat: place.latitude})
+         marker.addTo(map)
+         console.log(marker)
+       });
+     })
+  }
 
   render() {
     const style = {
