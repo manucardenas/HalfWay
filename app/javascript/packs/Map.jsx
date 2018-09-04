@@ -1,5 +1,5 @@
 import ReactOnRails from 'react-on-rails';
-
+import 'babel-polyfill'
 import Map from '../bundles/Map/components/Map';
 
 // This is how react_on_rails can see the Map in the browser.

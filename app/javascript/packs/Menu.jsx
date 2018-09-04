@@ -1,5 +1,5 @@
 import ReactOnRails from 'react-on-rails';
-
+import 'babel-polyfill'
 import Menu from '../bundles/Menu/components/Menu';
 
 // This is how react_on_rails can see the Menu in the browser.
