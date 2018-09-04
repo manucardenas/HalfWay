@@ -2,6 +2,7 @@
   "name": "HalfWay",
   "private": true,
   "dependencies": {
+    "@babel/polyfill": "^7.0.0",
     "@material-ui/core": "^3.0.1",
     "@material-ui/icons": "^3.0.1",
     "@rails/webpacker": "3.5",
@@ -11,7 +12,8 @@
     "prop-types": "^15.6.2",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
-    "react-on-rails": "11.1.2"
+    "react-on-rails": "11.1.2",
+    "wix": "^0.1.1"
   },
   "devDependencies": {
     "webpack-dev-server": "2.11.2"
