@@ -81,6 +81,7 @@ export default class Map extends Component {
     }
 }
 
+
 //INITIALIZE MAPS
 createMap = (mapOptions, geolocationOptions) => {
   this.map = new mapboxgl.Map(mapOptions);
@@ -104,7 +105,19 @@ createMap = (mapOptions, geolocationOptions) => {
   );
   //ON MAP LOAD, ADD ALL PLACE MARKERS FROM .JSON DATA
   map.on('load', (event) => {
+    //ADD USER POINTS AS GEOCODED json
+    map.addSource(
+      'points',
+      {
+        type: 'geojson',
+        data: {
+                type: "FeatureCollection",
+                features: []
+              }
+      });
+    map.addLayer({ id: 'points', type: 'circle', source: 'points'});
     this.pickChoice();
+
     //AFTER MAP SETTLES, FETCH NEW PLACE
     map.on('moveend', (e) => {
       this.pickChoice();
