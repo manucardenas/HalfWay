@@ -4,8 +4,8 @@ import axios from 'axios';
 
 var searchStyle = {
   boxSizing: "border-box",
-  width: "500px",
-  height: "50px",
+  width: "40%",
+  height: "60px",
   padding: "0 20px",
   outline: "none",
   fontSize: "18px",
@@ -14,6 +14,8 @@ var searchStyle = {
   border: "3px solid blue",
   transition: "all 0.8s ease",
   marginTop: "60px",
+  marginRight: "3px",
+  
 }
 
 var buttonStyle = {
@@ -27,6 +29,8 @@ var buttonStyle = {
   fontSize: "12px",
   margin: "4px 2px",
   borderRadius: "8px",
+  height:  "60px",
+  width: "200px",
 }
 
 
