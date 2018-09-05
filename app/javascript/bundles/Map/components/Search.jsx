@@ -3,10 +3,9 @@ import mapboxgl from 'mapbox-gl';
 import axios from 'axios';
 
 var searchStyle = {
-
   boxSizing: "border-box",
-  width: "200px",
-  height: "30px",
+  width: "500px",
+  height: "50px",
   padding: "0 20px",
   outline: "none",
   fontSize: "18px",
@@ -17,9 +16,19 @@ var searchStyle = {
   marginTop: "60px",
 }
 
-var radioStyle = {
-
+var buttonStyle = {
+  backgroundColor: "blue",
+  border: "none",
+  color: "white",
+  padding: "10px",
+  textAlign: "center",
+  textDecoration: "none",
+  display: "inline-block",
+  fontSize: "12px",
+  margin: "4px 2px",
+  borderRadius: "8px",
 }
+
 
 var center = {
   textAlign: "center"
@@ -34,8 +43,8 @@ export default class Search extends Component {
         <form onSubmit={this.props.mapCenter}>
           <input name="pointA" style={searchStyle} placeholder="Point A" ></input>
           <input name="pointB"  style={searchStyle} placeholder="Point B" ></input>
-          <button>Search</button>
-        </form>
+          <button style={buttonStyle}>Search</button>
+                  </form>
 
         <form onSubmit={this.props.pickChoice}>
           <input id="brunch" type="radio" name="activity" value="brunch"
@@ -51,7 +60,7 @@ export default class Search extends Component {
                         onChange={this.props.updateChoice}/>
                 <label htmlFor="beer">Beer</label>
 
-          <button>Search</button>
+          <button style={buttonStyle}>Search</button>
         </form>
       </div>
     )

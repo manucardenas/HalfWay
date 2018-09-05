@@ -151,7 +151,7 @@ createMap = (mapOptions, geolocationOptions) => {
 
   render() {
     const style = {
-      marginTop: '5vh',
+      marginTop: '6.5vh',
       width: '100%',
       height: '75vh',
       backgroundColor: 'azure'
