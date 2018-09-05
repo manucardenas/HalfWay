@@ -8,6 +8,8 @@ import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import { mailFolderListItems, otherMailFolderListItems } from './tileData';
+import Logo from '../../../../assets/images/Logo.png'
+
 
 const drawerWidth = 240;
 
@@ -46,7 +48,7 @@ function ClippedDrawer(props) {
       <AppBar position="absolute" className={classes.appBar}>
         <Toolbar>
           <Typography variant="title" color="inherit" noWrap>
-            Clipped drawer
+          <img src={Logo} width="150" height="70" />
           </Typography>
         </Toolbar>
       </AppBar>
