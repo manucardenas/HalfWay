@@ -117,8 +117,9 @@ createMap = (mapOptions, geolocationOptions) => {
 
 
   //METHOD THAT MAKES AXIOS REQUEST FOR PLACES.JSON
+
   pickChoice = (e) => {
-    e.preventDefault();
+    if (e){e.preventDefault();}
     const map = this.map;
     const self = this;
     const { lat, lng } = map.getCenter();
@@ -150,17 +151,18 @@ createMap = (mapOptions, geolocationOptions) => {
 
   render() {
     const style = {
-      marginTop: '10vh',
+      marginTop: '5vh',
       width: '100%',
-      height: '500px',
+      height: '75vh',
       backgroundColor: 'azure'
     };
     return(
       <Menu>
         <div>
+        <Search activity={this.state.activity} mapCenter={this.mapCenter} updateChoice={this.updateChoice} pickChoice={this.pickChoice} />
+
           <div style={style} ref={el => this.mapContainer = el}>
           </div>
-          <Search activity={this.state.activity} mapCenter={this.mapCenter} updateChoice={this.updateChoice} pickChoice={this.pickChoice} />
         </div>
       </Menu>
   );

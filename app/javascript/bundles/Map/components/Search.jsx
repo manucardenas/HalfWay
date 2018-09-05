@@ -2,15 +2,39 @@ import React, { Component } from 'react';
 import mapboxgl from 'mapbox-gl';
 import axios from 'axios';
 
+var searchStyle = {
+
+  boxSizing: "border-box",
+  width: "200px",
+  height: "30px",
+  padding: "0 20px",
+  outline: "none",
+  fontSize: "18px",
+  borderRadius: "50px",
+  color: "#29313a",
+  border: "3px solid blue",
+  transition: "all 0.8s ease",
+  marginTop: "60px",
+}
+
+var radioStyle = {
+
+}
+
+var center = {
+  textAlign: "center"
+}
 export default class Search extends Component {
+
 
   render(){
     return(
-      <div>
+      <div style={center}>
+
         <form onSubmit={this.props.mapCenter}>
-          <input name="pointA" placeholder="Point A" ></input>
-          <input name="pointB" placeholder="Point B" ></input>
-          <button>Submit</button>
+          <input name="pointA" style={searchStyle} placeholder="Point A" ></input>
+          <input name="pointB"  style={searchStyle} placeholder="Point B" ></input>
+          <button>Search</button>
         </form>
 
         <form onSubmit={this.props.pickChoice}>
@@ -27,9 +51,10 @@ export default class Search extends Component {
                         onChange={this.props.updateChoice}/>
                 <label htmlFor="beer">Beer</label>
 
-          <button>Submit</button>
+          <button>Search</button>
         </form>
       </div>
     )
   }
 }
+

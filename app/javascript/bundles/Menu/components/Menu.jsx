@@ -58,6 +58,7 @@ function ClippedDrawer(props) {
           paper: classes.drawerPaper,
         }}
       >
+
         <div className={classes.toolbar} />
         <List>{mailFolderListItems}</List>
         <Divider />
@@ -66,6 +67,7 @@ function ClippedDrawer(props) {
       <main className={classes.content}>
         {props.children}
       </main>
+      
     </div>
   );
 }
