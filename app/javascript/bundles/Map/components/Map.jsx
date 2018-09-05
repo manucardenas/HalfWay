@@ -115,8 +115,8 @@ createMap = (mapOptions, geolocationOptions) => {
                 features: []
               }
       });
-    map.addLayer({ id: 'points', type: 'circle', source: 'points'});
-    this.pickChoice();
+      map.addLayer({ id: 'points', type: 'circle', source: 'points'});
+    // this.pickChoice();
 
     //AFTER MAP SETTLES, FETCH NEW PLACE
     map.on('moveend', (e) => {
@@ -136,13 +136,11 @@ createMap = (mapOptions, geolocationOptions) => {
     axios.get(`/place?activity=${this.state.activity}`)
      .then((response) => {
        let places = response.data.activities.map((place)=>{
-         console.log(place.name)
          return place;
        })
-       console.log(places);
        places.forEach((place) =>{
          var elm = document.createElement('div');
-         console.log(place);
+         elm.className = "marker"
          let marker = new mapboxgl.Marker(elm)
          .setLngLat({lng: place.longitude, lat: place.latitude})
          marker.addTo(map)
