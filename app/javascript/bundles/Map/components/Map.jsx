@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactDOMServer from 'react-dom/server';
 import mapboxgl from 'mapbox-gl';
 import axios from 'axios';
 import Search from './Search';
@@ -115,8 +116,8 @@ createMap = (mapOptions, geolocationOptions) => {
                 features: []
               }
       });
-    map.addLayer({ id: 'points', type: 'circle', source: 'points'});
-    this.pickChoice();
+      map.addLayer({ id: 'points', type: 'circle', source: 'points'});
+    // this.pickChoice();
 
     //AFTER MAP SETTLES, FETCH NEW PLACE
     map.on('moveend', (e) => {
@@ -136,17 +137,28 @@ createMap = (mapOptions, geolocationOptions) => {
     axios.get(`/place?activity=${this.state.activity}`)
      .then((response) => {
        let places = response.data.activities.map((place)=>{
-         console.log(place.name)
          return place;
        })
-       console.log(places);
        places.forEach((place) =>{
          var elm = document.createElement('div');
-         console.log(place);
+         elm.className = "marker"
+         //CREATE POPUP
+         // var popelm = document.createElement('div');
+         // popelm.className = "popup"
+         let popup = new mapboxgl.Popup({offset: 25})
+         .setHTML(ReactDOMServer.renderToStaticMarkup(
+            <div>Hello</div>
+         ))
+         popup.on('open', (e) => {
+           document.getElementbyId(`place ${place.properties.name}`).innetHTML
+         });
+
          let marker = new mapboxgl.Marker(elm)
          .setLngLat({lng: place.longitude, lat: place.latitude})
+         .setPopup(popup)
          marker.addTo(map)
          console.log(marker)
+         console.log(popup)
        });
      })
   }
