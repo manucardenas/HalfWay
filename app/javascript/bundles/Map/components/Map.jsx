@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactDOMServer from 'react-dom/server';
 import mapboxgl from 'mapbox-gl';
 import axios from 'axios';
 import Search from './Search';
@@ -141,10 +142,23 @@ createMap = (mapOptions, geolocationOptions) => {
        places.forEach((place) =>{
          var elm = document.createElement('div');
          elm.className = "marker"
+         //CREATE POPUP
+         // var popelm = document.createElement('div');
+         // popelm.className = "popup"
+         let popup = new mapboxgl.Popup({offset: 25})
+         .setHTML(ReactDOMServer.renderToStaticMarkup(
+            <div>Hello</div>
+         ))
+         popup.on('open', (e) => {
+           document.getElementbyId(`place ${place.properties.name}`).innetHTML
+         });
+
          let marker = new mapboxgl.Marker(elm)
          .setLngLat({lng: place.longitude, lat: place.latitude})
+         .setPopup(popup)
          marker.addTo(map)
          console.log(marker)
+         console.log(popup)
        });
      })
   }
