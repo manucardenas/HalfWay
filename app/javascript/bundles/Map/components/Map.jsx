@@ -30,6 +30,7 @@ export default class Map extends Component {
         map.getSource('points').setData(response.data);
         map.flyTo({center: halfWay.geometry.coordinates, zoom: 12});
       });
+      pickChoice();
   }
 
   updateChoice = (e) => {

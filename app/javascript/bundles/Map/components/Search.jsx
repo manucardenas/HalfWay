@@ -17,7 +17,7 @@ var searchStyle = {
   transition: "all 0.8s ease",
   marginTop: "65px",
   marginRight: "3px",
-  
+
 }
 
 var searchStyleB = Object.assign( {}, searchStyle);
@@ -67,33 +67,31 @@ class Search extends Component {
         <form onSubmit={this.props.mapCenter}>
           <input name="pointA" style={searchStyle} placeholder="Point A" ></input>
           <input name="pointB"  style={searchStyleB} placeholder="Point B" ></input>
-          <button style={buttonStyle}>Search</button>
-                  </form>
-
-        <form onSubmit={this.props.pickChoice}>
-          <Radio id="brunch" 
+          <Radio id="brunch"
             name="activity" value="brunch"
             checked={this.props.activity=="brunch"}
-            onChange={this.props.updateChoice} 
+            onChange={this.props.updateChoice}
             classes={{root: classes.root, checked: classes.checked}}
             />
           <label htmlFor="brunch" >Brunch</label>
-          <Radio name="activity" 
+          <Radio name="activity"
             value="breakfast"
             checked={this.props.activity=="breakfast"}
-            onChange={this.props.updateChoice} 
+            onChange={this.props.updateChoice}
             classes={{root: classes.root, checked: classes.checked}}
             />
           <label htmlFor="breakfast">Breakfast</label>
-          <Radio name="activity" 
+          <Radio name="activity"
             value="beer"
             checked={this.props.activity=="beer"}
             onChange={this.props.updateChoice}
             classes={{root: classes.root, checked: classes.checked}}
             />
           <label htmlFor="beer">Beer</label>
-          <button style={buttonStyle}>Search</button>
+        <button style={buttonStyle}>Search</button>
         </form>
+
+
       </div>
     )
   }
