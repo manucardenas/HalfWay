@@ -50,7 +50,8 @@ export default class Map extends Component {
       container: this.mapContainer,
       style: `mapbox://styles/mapbox/streets-v9`,
       zoom: 12,
-      center: [-80.2044, 25.8028]
+      center: [-80.2044, 25.8028],
+      height: "55vh"
     }
 
     if ("geolocation" in navigator && geolocate) {
@@ -153,12 +154,12 @@ createMap = (mapOptions, geolocationOptions) => {
     const style = {
       marginTop: '2vh',
       width: '100%',
-      height: '80vh',
+      height: '50vh',
       backgroundColor: 'azure'
     };
     return(
       <Menu>
-        <div>
+        <div style={{height:"100vh"}} >
         <Search activity={this.state.activity} mapCenter={this.mapCenter} updateChoice={this.updateChoice} pickChoice={this.pickChoice} />
 
           <div style={style} ref={el => this.mapContainer = el}>

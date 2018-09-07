@@ -40,15 +40,29 @@ const styles = theme => ({
 
 
 
+
+
 function ClippedDrawer(props) {
   const { classes } = props;
 
   return (
     <div className={classes.root}>
-      <AppBar position="absolute" className={classes.appBar}>
+      <AppBar position="absolute" className={classes.appBar} style= {{backgroundColor:"#007bff"}}>
         <Toolbar>
-          <Typography variant="title" color="inherit" noWrap>
-          <img src={Logo} width="150" height="70" />
+          <Typography variant="title" color="inherit" style={{
+            fontFamily:  "Anton",
+            fontSize: "2em",
+            marginLeft: "auto",
+            marginRight: "auto",
+            textAlign: "center"
+          }} noWrap>
+
+          
+         <strong>HALF WAY</strong> 
+
+         <div><i class="fas fa-map-marker"></i><i class="fas fa-long-arrow-alt-right">
+         </i>&nbsp;<i class="fas fa-long-arrow-alt-left"></i><i class="fas fa-map-marker"></i>
+         </div>
           </Typography>
         </Toolbar>
       </AppBar>
