@@ -28,7 +28,7 @@ export default class Map extends Component {
           return feature.properties.title === "Halfway"
         });
         map.getSource('points').setData(response.data);
-        map.flyTo({center: halfWay.geometry.coordinates, zoom: 12});
+        map.flyTo({center: halfWay.geometry.coordinates, zoom: 8});
       });
       pickChoice();
   }
