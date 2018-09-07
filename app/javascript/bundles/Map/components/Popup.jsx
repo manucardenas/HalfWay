@@ -10,9 +10,9 @@ export default class Popup extends Component {
 
   render() {
     return(
-      <div>
+      <div id= "Popup">
         <a href={this.props.place.url} target="_blank">{this.props.place.name}</a>
-        <img src={this.props.place.image_url}></img>
+        <img className="popup-image" src={this.props.place.image_url}></img>
         <p>{this.props.place.location}</p>
         <p>{this.props.place.phone}</p>
 
