@@ -24,7 +24,7 @@ var searchStyleB = Object.assign( {}, searchStyle);
 searchStyleB.marginTop = "5px";
 
 var buttonStyle = {
-  backgroundColor: "blue",
+  backgroundColor: "#007bff",
   border: "none",
   color: "white",
   padding: "10px",
@@ -90,8 +90,6 @@ class Search extends Component {
           <label htmlFor="beer">Beer</label>
         <button style={buttonStyle}>Search</button>
         </form>
-
-
       </div>
     )
   }
