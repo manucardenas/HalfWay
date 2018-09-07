@@ -8,6 +8,8 @@ import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import { mailFolderListItems, otherMailFolderListItems } from './tileData';
+import Logo from '../../../../assets/images/Logo.png'
+
 
 const drawerWidth = 240;
 
@@ -38,15 +40,29 @@ const styles = theme => ({
 
 
 
+
+
 function ClippedDrawer(props) {
   const { classes } = props;
 
   return (
     <div className={classes.root}>
-      <AppBar position="absolute" className={classes.appBar}>
+      <AppBar position="absolute" className={classes.appBar} style= {{backgroundColor:"#007bff"}}>
         <Toolbar>
-          <Typography variant="title" color="inherit" noWrap>
-            Clipped drawer
+          <Typography variant="title" color="inherit" style={{
+            fontFamily:  "Anton",
+            fontSize: "2em",
+            marginLeft: "auto",
+            marginRight: "auto",
+            textAlign: "center"
+          }} noWrap>
+
+          
+         <strong>HALF WAY</strong> 
+
+         <div><i class="fas fa-map-marker"></i><i class="fas fa-long-arrow-alt-right">
+         </i>&nbsp;<i class="fas fa-long-arrow-alt-left"></i><i class="fas fa-map-marker"></i>
+         </div>
           </Typography>
         </Toolbar>
       </AppBar>
@@ -56,6 +72,7 @@ function ClippedDrawer(props) {
           paper: classes.drawerPaper,
         }}
       >
+
         <div className={classes.toolbar} />
         <List>{mailFolderListItems}</List>
         <Divider />
@@ -64,6 +81,7 @@ function ClippedDrawer(props) {
       <main className={classes.content}>
         {props.children}
       </main>
+      
     </div>
   );
 }
