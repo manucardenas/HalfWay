@@ -129,7 +129,6 @@ createMap = (mapOptions, geolocationOptions) => {
     axios.get(`/place?activity=${this.state.activity}`)
      .then((response) => {
        let places = response.data.activities.map((place)=>{
-         console.log(place)
          return place;
        })
        places.forEach((place) =>{
@@ -145,7 +144,6 @@ createMap = (mapOptions, geolocationOptions) => {
          .setLngLat({lng: place.longitude, lat: place.latitude})
          .setPopup(popup)
          marker.addTo(map)
-         console.log(marker)
          console.log(popup)
        });
      })
