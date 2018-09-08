@@ -62,8 +62,5 @@ places.each do |place_|
       category_id: Category.find_by(category: type.fetch('alias')).id)
   end
 
-  # place.categories = place_.fetch('categories').map do |c|
-  #   c.fetch('alias')
-  # end.join(',')
 
 end

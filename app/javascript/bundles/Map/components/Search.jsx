@@ -11,9 +11,9 @@ var searchStyle = {
   padding: "0 20px",
   outline: "none",
   fontSize: "1em",
-  borderRadius: "50px",
+  borderRadius: "8px",
   color: "#29313a",
-  border: "3px solid blue",
+  border: "3px solid #007bff",
   transition: "all 0.8s ease",
   marginTop: "65px",
   marginRight: "3px",
@@ -24,7 +24,7 @@ var searchStyleB = Object.assign( {}, searchStyle);
 searchStyleB.marginTop = "5px";
 
 var buttonStyle = {
-  backgroundColor: "blue",
+  backgroundColor: "#007bff",
   border: "none",
   color: "white",
   padding: "10px",
@@ -90,8 +90,6 @@ class Search extends Component {
           <label htmlFor="beer">Beer</label>
         <button style={buttonStyle}>Search</button>
         </form>
-
-
       </div>
     )
   }

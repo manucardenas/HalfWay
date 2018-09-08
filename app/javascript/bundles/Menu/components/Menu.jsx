@@ -7,7 +7,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
-import { mailFolderListItems, otherMailFolderListItems } from './tileData';
+import { mailFolderListItems} from './tileData';
 import Logo from '../../../../assets/images/Logo.png'
 
 
@@ -31,7 +31,6 @@ const styles = theme => ({
   },
   content: {
     flexGrow: 1,
-    backgroundColor: theme.palette.background.default,
     padding: theme.spacing.unit * 3,
     minWidth: 0, // So the Typography noWrap works
   },
@@ -57,8 +56,8 @@ function ClippedDrawer(props) {
             textAlign: "center"
           }} noWrap>
 
-          
-         <strong>HALF WAY</strong> 
+
+         <strong>HALF WAY</strong>
 
          <div><i class="fas fa-map-marker"></i><i class="fas fa-long-arrow-alt-right">
          </i>&nbsp;<i class="fas fa-long-arrow-alt-left"></i><i class="fas fa-map-marker"></i>
@@ -76,12 +75,11 @@ function ClippedDrawer(props) {
         <div className={classes.toolbar} />
         <List>{mailFolderListItems}</List>
         <Divider />
-        <List>{otherMailFolderListItems}</List>
       </Drawer>
       <main className={classes.content}>
         {props.children}
       </main>
-      
+
     </div>
   );
 }
