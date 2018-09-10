@@ -18,7 +18,7 @@ const styles = theme => ({
     flexGrow: 1,
     height: '100vh',
     zIndex: 1,
-    overflow: 'hidden',
+    overflow: 'scroll',
     position: 'relative',
     display: 'flex',
   },
@@ -62,8 +62,8 @@ function ClippedDrawer(props) {
 
          <strong>HALF WAY</strong>
 
-         <div><i class="fas fa-map-marker"></i>&nbsp;<i class="fas fa-long-arrow-alt-right">
-         </i>&nbsp;<i class="fas fa-long-arrow-alt-left"></i>&nbsp;<i class="fas fa-map-marker"></i>
+         <div><i className="fas fa-map-marker"></i><i className="fas fa-long-arrow-alt-right">
+         </i>&nbsp;<i className="fas fa-long-arrow-alt-left"></i><i className="fas fa-map-marker"></i>
          </div>
           </Typography>
         </Toolbar>

@@ -30,7 +30,7 @@ export default class Map extends Component {
         map.getSource('points').setData(response.data);
         map.flyTo({center: halfWay.geometry.coordinates, zoom: 8});
       });
-      pickChoice();
+      if(this.state.activity){ this.pickChoice() }
   }
 
   updateChoice = (e) => {
@@ -112,8 +112,8 @@ createMap = (mapOptions, geolocationOptions) => {
 
     //AFTER MAP SETTLES, FETCH NEW PLACE
     map.on('moveend', (e) => {
-      this.pickChoice();
-     });
+      if(this.state.activity){ this.pickChoice() }
+    });
   });
 }
 
@@ -126,6 +126,7 @@ createMap = (mapOptions, geolocationOptions) => {
     const self = this;
     const { lat, lng } = map.getCenter();
     axios.defaults.headers.common['Accept'] = 'application/json'
+
     axios.get(`/place?activity=${this.state.activity}`)
      .then((response) => {
        let places = response.data.activities.map((place)=>{
@@ -143,8 +144,7 @@ createMap = (mapOptions, geolocationOptions) => {
          let marker = new mapboxgl.Marker(elm)
          .setLngLat({lng: place.longitude, lat: place.latitude})
          .setPopup(popup)
-         marker.addTo(map)
-         console.log(popup)
+         marker.addTo(map);
        });
      })
   }
@@ -159,7 +159,13 @@ createMap = (mapOptions, geolocationOptions) => {
     return(
       <Menu>
         <div style={{height:"100vh"}} >
-        <Search activity={this.state.activity} mapCenter={this.mapCenter} updateChoice={this.updateChoice} pickChoice={this.pickChoice} />
+        <Search
+          activity={this.state.activity}
+          mapCenter={this.mapCenter}
+          updateChoice={this.updateChoice}
+          pickChoice={this.pickChoice}
+          categories={this.props.categories}
+        />
 
           <div style={style} ref={el => this.mapContainer = el}>
           </div>
