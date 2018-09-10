@@ -153,7 +153,7 @@ createMap = (mapOptions, geolocationOptions) => {
     const style = {
       marginTop: '2vh',
       width: '100%',
-      height: '50vh',
+      height: '60vh',
       backgroundColor: 'azure'
     };
     return(

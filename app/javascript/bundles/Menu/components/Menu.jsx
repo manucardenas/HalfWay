@@ -49,18 +49,18 @@ function ClippedDrawer(props) {
       <AppBar position="absolute" className={classes.appBar} style= {{backgroundColor:"#007bff"}}>
         <Toolbar>
           <Typography variant="title" color="inherit" style={{
-            fontFamily:  "Anton",
+            fontFamily: 'Baloo Tammudu',
             fontSize: "2em",
             marginLeft: "auto",
             marginRight: "auto",
-            textAlign: "center"
+            textAlign: "center",
           }} noWrap>
 
 
          <strong>HALF WAY</strong>
 
-         <div><i class="fas fa-map-marker"></i><i class="fas fa-long-arrow-alt-right">
-         </i>&nbsp;<i class="fas fa-long-arrow-alt-left"></i><i class="fas fa-map-marker"></i>
+         <div><i class="fas fa-map-marker"></i>&nbsp;<i class="fas fa-long-arrow-alt-right">
+         </i>&nbsp;<i class="fas fa-long-arrow-alt-left"></i>&nbsp;<i class="fas fa-map-marker"></i>
          </div>
           </Typography>
         </Toolbar>
@@ -82,7 +82,7 @@ function ClippedDrawer(props) {
 
     </div>
   );
-}
+ d}
 
 ClippedDrawer.propTypes = {
   classes: PropTypes.object.isRequired,
