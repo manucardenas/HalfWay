@@ -54,6 +54,9 @@ function ClippedDrawer(props) {
             marginLeft: "auto",
             marginRight: "auto",
             textAlign: "center",
+            paddingTop: "8px",
+            paddingBottom: "2px",
+            marginBottom: "-8px"
           }} noWrap>
 
 
