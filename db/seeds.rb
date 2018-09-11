@@ -38,6 +38,4 @@ places.each do |place_|
     PlacesCategory.create!(place_id: place.id,
       category_id: Category.find_by(category: type.fetch('alias')).id)
   end
-
-
 end
