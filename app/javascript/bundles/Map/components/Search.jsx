@@ -67,27 +67,24 @@ class Search extends Component {
         <form onSubmit={this.props.mapCenter}>
           <input name="pointA" style={searchStyle} placeholder="Point A" ></input>
           <input name="pointB"  style={searchStyleB} placeholder="Point B" ></input>
-          <Radio id="brunch"
-            name="activity" value="brunch"
-            checked={this.props.activity=="brunch"}
-            onChange={this.props.updateChoice}
-            classes={{root: classes.root, checked: classes.checked}}
-            />
-          <label htmlFor="brunch" >Brunch</label>
-          <Radio name="activity"
-            value="breakfast"
-            checked={this.props.activity=="breakfast"}
-            onChange={this.props.updateChoice}
-            classes={{root: classes.root, checked: classes.checked}}
-            />
-          <label htmlFor="breakfast">Breakfast</label>
-          <Radio name="activity"
-            value="beer"
-            checked={this.props.activity=="beer"}
-            onChange={this.props.updateChoice}
-            classes={{root: classes.root, checked: classes.checked}}
-            />
-          <label htmlFor="beer">Beer</label>
+
+          {
+            this.props.categories.map((category) => {
+              return(
+                <span key={category}>
+                  <Radio
+                    id={category}
+                    name="activity"
+                    value={category}
+                    checked={this.props.activity==category}
+                    onChange={this.props.updateChoice}
+                    classes={{root: classes.root, checked: classes.checked}}
+                  />
+                  <label htmlFor={category}>{category}</label>
+                </span>
+              )
+            })
+          }
         <button style={buttonStyle}>Search</button>
         </form>
       </div>
