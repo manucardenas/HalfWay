@@ -13,7 +13,6 @@ export default class Popup extends Component {
       <div id="popup">
         <img className="popup-image" src={this.props.place.image_url}></img>
         <a className="place-name" href={this.props.place.url} target="_blank">{this.props.place.name}</a>
-        <p>{this.props.place.phone}</p>
       </div>
     );
   }

@@ -12,11 +12,12 @@
 }
 
 .popup-image {
-  padding-top: 2px;
-  height: 10vh;
-  width: auto;
-  text-align: center;
-  radius: 10px;
+  padding-top: 2vh;
+  height: 150px;
+  width: 150px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .place-name{
